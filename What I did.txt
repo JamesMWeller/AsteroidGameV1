@@ -1,1 +1,3 @@
-Today I plan to create all the states for my game, and implmenet the prototype into one of the states
+Day 1 - Today I plan to create all the states for my game, and implmenet the prototype into one of the states (I got the states setup at there barebones state)
+DAY 2 - I am going to work on setup up the prototype in the state envirmoent, I will do this in the simple state (I got the simple state setup witht he game, the biggest problem I had was with creating function)
+	I want to work on 
