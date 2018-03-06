@@ -1,0 +1,1 @@
+Today I plan to create all the states for my game, and implmenet the prototype into one of the states
