@@ -93,6 +93,14 @@
 	addToPendingDestroy: function (a,b){
 		pendingDestroy.push(a);
 		pendingDestroy.push(b);
+		if(typeof(Storage) !== "undefined")
+				{
+					if ( localStorage.asteroidsdestroyed){
+						localStorage.asteroidsdestroyed = Number(localStorage.asteroidsdestroyed)+1;
+				} else {
+					localStorage.asteroidsdestroyed = 1;
+				}		
+			}
 	},
 	
 	overlapDestroy: function (a, b) {
@@ -104,19 +112,29 @@
     var y = (a.y + b.y) / 2;
 	
 	},
-	
-	
-	
+
 	planetLoseLife: function(a, b)
 	{
 		if (planetLife == 0) {
-				alert("Game Over!!");
-				location.reload();
+			
+			alert("Game Over");
+			game.state.restart();
+				if(typeof(Storage) !== "undefined")
+				{
+					if ( localStorage.gameovercount){
+						localStorage.gameovercount = Number(localStorage.gameovercount)+1;
+				} else {
+					localStorage.gameovercount = 1;
+				}		
+			}
 		} else if (planetLife > 0) {
-			pendingDestroy.push(a)
-			planetLife = planetLife - 1;
+				pendingDestroy.push(a)
+				planetLife = planetLife - 1;
 		}
+		
 	},
+	
+	
 	
 	
 }
