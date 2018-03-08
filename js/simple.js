@@ -2,7 +2,6 @@
 	// this is used to create variables that are accessible in create and update (state scope) 
 	// var is used to create variables that are only used within the current function (local scope) 
 	create: function (){
-
 		
 		game.physics.startSystem(Phaser.Physics.ARCADE);
 
@@ -18,12 +17,13 @@
 		game.input.addPointer();
 
 		text = game.add.text(16, 16, 'Your Planet has ' + planetLife + ' lives left.', { fill: '#ffffff' });
-
+		
+		var randElement = elementAttr[Math.floor(Math.random()*elementAttr.length)];
 
 		for (var i = 0; i < 12; i++) {
 			asteroid = asteroids.create(game.world.randomX, game.world.randomY, 'asteroid')
 			{
-				this.worldType = this.randomElement();
+				var planetAttribute = randElement;
 				enableBody = true;
 				game.physics.enable(asteroid, Phaser.Physics.ARCADE);
 			};
@@ -71,13 +71,10 @@
 		
 	},
 	
-	randomElement: function(){
-		
-	},
-	
 	onDragStart: function (){
 		this.dragStartLocation = { x: this.x, y: this.y };
 		console.log(this.dragStartLocation);
+		console.log(this.planetAttribute);
 	},
 	
 	onDragStop: function (){
@@ -95,7 +92,7 @@
 		pendingDestroy.push(b);
 		if(typeof(Storage) !== "undefined")
 				{
-					if ( localStorage.asteroidsdestroyed){
+					if (localStorage.asteroidsdestroyed){
 						localStorage.asteroidsdestroyed = Number(localStorage.asteroidsdestroyed)+1;
 				} else {
 					localStorage.asteroidsdestroyed = 1;
@@ -105,11 +102,11 @@
 	
 	overlapDestroy: function (a, b) {
 
-    var boundsA = a.getBounds();
-    var boundsB = b.getBounds();
+		var boundsA = a.getBounds();
+		var boundsB = b.getBounds();
 
-    var x = (a.x + b.x) / 2;
-    var y = (a.y + b.y) / 2;
+		var x = (a.x + b.x) / 2;
+		var y = (a.y + b.y) / 2;
 	
 	},
 

@@ -18,6 +18,15 @@ const EARTH = "earth";
 const AIR = "air";
 const ENERGY = "energy";
 
+var elementAttr = [
+		"Air",
+		"Water",
+		"Fire",
+		"Energy"
+		];
+		
+		
+
 const ARROW_GRAPHIC = "arrow_graphic";
 game.state.add('preload', preloadState);
 game.state.add('createSimple', simpleState);
