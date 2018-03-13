@@ -2,6 +2,7 @@
 	// this is used to create variables that are accessible in create and update (state scope) 
 	// var is used to create variables that are only used within the current function (local scope) 
 	create: function (){
+		planetLife = 3;
 		
 		game.physics.startSystem(Phaser.Physics.ARCADE);
 
@@ -9,28 +10,31 @@
 		planets = game.add.physicsGroup(Phaser.Physics.ARCADE);
 
 		planets.enableBody = true;
-		asteroids.enableBody = true;
-
-		game.input.addPointer();
-		game.input.addPointer();
-		game.input.addPointer();
-		game.input.addPointer();
+		//asteroids.enableBody = true;
 
 		text = game.add.text(16, 16, 'Your Planet has ' + planetLife + ' lives left.', { fill: '#ffffff' });
 		
 		var randElement = elementAttr[Math.floor(Math.random()*elementAttr.length)];
+		var i = 0;
+		while (i < 12) {
+			var dx = game.world.randomX;
+			var dy = game.world.randomY;
+			if((dx > (game.width/2)-50 && dx < (game.width/2)+232)&&(dy > (game.height/2)-50 && (dy < game.height/2)+232)){
+				
+				//Illegal Position
+				
+			} else {
+				
+				asteroid = asteroids.create(game.world.randomX, game.world.randomY, 'asteroid')
+					{
+						var planetAttribute = randElement;
+						enableBody = true;
+						game.physics.enable(asteroid, Phaser.Physics.ARCADE);
+					};
 
-		for (var i = 0; i < 12; i++) {
-			asteroid = asteroids.create(game.world.randomX, game.world.randomY, 'asteroid')
-			{
-				var planetAttribute = randElement;
-				enableBody = true;
-				game.physics.enable(asteroid, Phaser.Physics.ARCADE);
-			};
-
-			var rand = game.rnd.realInRange(1, 2);
+			var rand = game.rnd.realInRange(1, 3);
 			asteroid.scale.setTo(rand, rand);
-			asteroid.body.setCircle();
+			asteroid.body.setCircle(28);
 			asteroid.body.collideWorldBounds = true;
 			asteroid.inputEnabled = true;
 			asteroid.input.enableDrag();
@@ -38,12 +42,15 @@
 			asteroid.events.onDragStart.add(this.onDragStart, asteroid);
 			asteroid.events.onDragStop.add(this.onDragStop, asteroid);
 
+			i++;
+			}
+			
 		}
 
 		for (var i = 0; i < 1; i++) {
 			planet = planets.create(game.width / 2, game.height / 2, 'planet');
-			planet.scale.setTo(0.3, 0.3);
-			planet.body.setCircle(345, 280, 375);
+			//planet.scale.setTo(0.3, 0.3);
+			planet.body.setCircle(172);
 			planet.body.collideWorldBounds = true;
 			planet.inputEnabled = true;
 			planet.input.enableDrag();
@@ -116,6 +123,7 @@
 			
 			alert("Game Over");
 			game.state.restart();
+			
 				if(typeof(Storage) !== "undefined")
 				{
 					if ( localStorage.gameovercount){
@@ -124,14 +132,19 @@
 					localStorage.gameovercount = 1;
 				}		
 			}
-		} else if (planetLife > 0) {
+		} else {
 				pendingDestroy.push(a)
 				planetLife = planetLife - 1;
 		}
 		
 	},
 	
-	
+	render: function (){
+		
+		
+		game.debug.physicsGroup(asteroids);
+		game.debug.physicsGroup(planets);
+	},
 	
 	
 }

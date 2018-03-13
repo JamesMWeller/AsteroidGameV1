@@ -25,7 +25,7 @@ var elementAttr = [
 		"Energy"
 		];
 		
-		
+			
 
 const ARROW_GRAPHIC = "arrow_graphic";
 game.state.add('preload', preloadState);
