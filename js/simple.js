@@ -75,6 +75,11 @@
 
     game.physics.arcade.overlap(asteroids, asteroids, this.addToPendingDestroy);
 
+	//doesnt do anything fix now!!
+	if(asteroids < 1){
+			alert("asteroids less than 1")
+	}
+	
 		
 	},
 	
