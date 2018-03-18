@@ -9,6 +9,8 @@ var planet;
 var pendingDestroy = [];
 var planetLife = 3;
 
+var amountOfAsteroids = 0;
+
 var text;
 var text2;
 

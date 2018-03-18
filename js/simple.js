@@ -2,7 +2,9 @@
 	// this is used to create variables that are accessible in create and update (state scope) 
 	// var is used to create variables that are only used within the current function (local scope) 
 	create: function (){
+		
 		planetLife = 3;
+		amountOfAsteroids = 0;
 		
 		game.physics.startSystem(Phaser.Physics.ARCADE);
 
@@ -19,7 +21,7 @@
 		while (i < 12) {
 			var dx = game.world.randomX;
 			var dy = game.world.randomY;
-			if((dx > (game.width/2)-50 && dx < (game.width/2)+232)&&(dy > (game.height/2)-50 && (dy < game.height/2)+232)){
+			if((dx > (game.width/2)-75 && dx < (game.width/2)+250)&&(dy > (game.height/2)-75 && (dy < game.height/2)+250)){
 				
 				//Illegal Position
 				
@@ -32,8 +34,9 @@
 						game.physics.enable(asteroid, Phaser.Physics.ARCADE);
 					};
 
-			var rand = game.rnd.realInRange(1, 3);
+			var rand = game.rnd.realInRange(0.5, 2);
 			asteroid.scale.setTo(rand, rand);
+			var alive = "true";
 			asteroid.body.setCircle(28);
 			asteroid.body.collideWorldBounds = true;
 			asteroid.inputEnabled = true;
@@ -49,7 +52,7 @@
 
 		for (var i = 0; i < 1; i++) {
 			planet = planets.create(game.width / 2, game.height / 2, 'planet');
-			//planet.scale.setTo(0.3, 0.3);
+			planet.scale.setTo(0.5, 0.5);
 			planet.body.setCircle(172);
 			planet.body.collideWorldBounds = true;
 			planet.inputEnabled = true;
@@ -66,7 +69,7 @@
 	},
 	update: function (){
 		
-		 while (pendingDestroy.length > 0) {
+	while(pendingDestroy.length > 0) {
         pendingDestroy.pop().destroy();
     }
     if (game.physics.arcade.overlap(asteroids, planets, this.planetLoseLife)) {
@@ -75,12 +78,32 @@
 
     game.physics.arcade.overlap(asteroids, asteroids, this.addToPendingDestroy);
 
-	//doesnt do anything fix now!!
-	if(asteroids < 1){
-			alert("asteroids less than 1")
-	}
+	/* asteroids.forEach(function(asteroid){ 
 	
+	 var executed = false;
+		return function() {
+        if (!executed) {
+			amountOfAsteroids = amountOfAsteroids+1;
+			console.log(amountOfAsteroids);
+            executed = true;
+            // do something
 		
+        }
+    }; */
+	
+	if(asteroids.length === 0) {
+		if(planetLife >= 1)
+		{
+			alert("Congratulations you've save the planet");
+			game.state.restart();
+		}else{
+			console.log("123");
+		}
+	} else {
+		//Still got asteroids
+	}
+		
+	
 	},
 	
 	onDragStart: function (){
@@ -116,6 +139,8 @@
 
 		var boundsA = a.getBounds();
 		var boundsB = b.getBounds();
+		
+		amountOfAsteroids = amountOfAsteroids - 1;
 
 		var x = (a.x + b.x) / 2;
 		var y = (a.y + b.y) / 2;
@@ -140,6 +165,7 @@
 		} else {
 				pendingDestroy.push(a)
 				planetLife = planetLife - 1;
+				
 		}
 		
 	},
