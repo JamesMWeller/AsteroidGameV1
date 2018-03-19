@@ -16,18 +16,30 @@
 
 		text = game.add.text(16, 16, 'Your Planet has ' + planetLife + ' lives left.', { fill: '#ffffff' });
 		
+		for (var i = 0; i < 1; i++) {
+			planet = planets.create(game.width / 2, game.height / 2, 'planet');
+			planet.scale.setTo(0.5, 0.5);
+			planet.body.setCircle(172);
+			planet.body.collideWorldBounds = true;
+			planet.inputEnabled = true;
+			planet.anchor.setTo(0.5,0.5);
+			planet.input.enableDrag();
+			planet.input.useHandCursor = true;
+		}
+		
 		var randElement = elementAttr[Math.floor(Math.random()*elementAttr.length)];
 		var i = 0;
 		while (i < 12) {
 			var dx = game.world.randomX;
 			var dy = game.world.randomY;
-			if((dx > (game.width/2)-75 && dx < (game.width/2)+250)&&(dy > (game.height/2)-75 && (dy < game.height/2)+250)){
+			
+			
+			if((dx > (game.width/2)-200 && dx < (game.width/2)+200)&&(dy > (game.height/2)-200 && (dy < game.height/2)+200)){
 				
-				//Illegal Position
 				
 			} else {
 				
-				asteroid = asteroids.create(game.world.randomX, game.world.randomY, 'asteroid')
+				asteroid = asteroids.create(dx, dy, 'asteroid')
 					{
 						var planetAttribute = randElement;
 						enableBody = true;
@@ -37,6 +49,7 @@
 			var rand = game.rnd.realInRange(0.5, 2);
 			asteroid.scale.setTo(rand, rand);
 			var alive = "true";
+			asteroid.anchor.setTo(0.5,0.5);
 			asteroid.body.setCircle(28);
 			asteroid.body.collideWorldBounds = true;
 			asteroid.inputEnabled = true;
@@ -46,19 +59,20 @@
 			asteroid.events.onDragStop.add(this.onDragStop, asteroid);
 
 			i++;
+			
 			}
 			
 		}
+		
+		var graphics = game.add.graphics(0, 0);
 
-		for (var i = 0; i < 1; i++) {
-			planet = planets.create(game.width / 2, game.height / 2, 'planet');
-			planet.scale.setTo(0.5, 0.5);
-			planet.body.setCircle(172);
-			planet.body.collideWorldBounds = true;
-			planet.inputEnabled = true;
-			planet.input.enableDrag();
-			planet.input.useHandCursor = true;
-		}
+    // graphics.lineStyle(2, 0xffd900, 1);
+
+		graphics.beginFill(0xFF0000, 1);
+		graphics.drawCircle(game.width/2, game.height/2, 172);
+	
+
+		
 		
 		var simpleButton = createButton(100, game.height - 50, 150, 50, "Home");
 	    simpleButton.events.onInputUp.add(
