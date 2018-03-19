@@ -173,8 +173,8 @@
 	render: function (){
 		
 		
-		game.debug.physicsGroup(asteroids);
-		game.debug.physicsGroup(planets);
+		//game.debug.physicsGroup(asteroids);
+		//game.debug.physicsGroup(planets);
 	},
 	
 	
