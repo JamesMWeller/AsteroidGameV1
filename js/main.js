@@ -1,17 +1,21 @@
 'use strict';
 var game = new Phaser.Game(window.innerWidth * window.devicePixelRatio, window.innerHeight * window.devicePixelRatio, Phaser.AUTO, "gameDiv");
-var blueCircle, arrow, buttonSimple, buttonComplex;
+
+var buttonSimple;
+var buttonComplex;
 
 var asteroids;
 var planets;
+
 var asteroid;
 var planet;
-var pendingDestroy = [];
-var planetLife = 3;
 
+var pendingDestroy = [];
+
+var planetLife = 3;
 var amountOfAsteroids = 0;
 
-var text;
+var livesLeftText;
 var text2;
 
 const FIRE = "fire";
