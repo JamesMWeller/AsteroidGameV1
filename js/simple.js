@@ -171,7 +171,7 @@
 			}
 	},
 	
-	//This 
+	//This grabs the location of two asteroids and gives a new position
 	overlapDestroy: function (a, b) {
 
 		var boundsA = a.getBounds();
@@ -184,6 +184,7 @@
 	
 	},
 
+	//Planet loses life when an asteroid hits it
 	planetLoseLife: function(a, b)
 	{
 		if (planetLife == 0) {

@@ -1,9 +1,8 @@
 ﻿var mediumState = {
 //
 	create : function (){
-	//
-	console.log("Menu Loaded")
-	
+
+	//Mulitple buttons
 	var playButton = createButton(game.width/2, game.height/2 - 60, 150, 50, "Play");
 	playButton.events.onInputUp.add(
 			function(){
@@ -22,11 +21,11 @@
 				game.state.start('createOptions');
 	},this)
 	
-	//
+
 	},
 	
 	update: function(){
 		
 	}
-//
+
 }
