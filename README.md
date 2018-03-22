@@ -1,4 +1,19 @@
-#To-Do List
+#Asteroid Game
+
+Collide asteroids to create planets, protect those planets from other dangers.
+
+
+##Compatible Devices
+
+IOS 11 - Safari
+Android - Internet
+Android - Firefox
+
+Firefox 58 
+Chrome 65
+IE 11
+
+##To-Do List
 
 1)The first thing to do is working on adding more to the game aesthetics, making the text bigger and asteroids bigger.
 
