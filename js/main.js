@@ -1,5 +1,5 @@
 'use strict';
-var game = new Phaser.Game(window.innerWidth * window.devicePixelRatio, window.innerHeight * window.devicePixelRatio, Phaser.AUTO, "gameDiv");
+var game = new Phaser.Game(window.innerWidth * window.devicePixelRatio, window.innerHeight * window.devicePixelRatio, Phaser.CANVAS, "gameDiv");
 
 //Button Variables
 var buttonSimple;
@@ -24,6 +24,8 @@ var amountOfAsteroids = 0;
 var livesLeftText;
 var text2;
 
+var bgX = game.rnd.realInRange(-1,1);
+var	bgY = game.rnd.realInRange(-1,1);
 //Constances for future use in the game
 const FIRE = "fire";
 const WATER = "water";

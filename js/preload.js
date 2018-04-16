@@ -3,6 +3,7 @@
 		//Loading the images
 		game.load.image('asteroid', 'images/asteroidNew.png');
 		game.load.image('planet', 'images/planetSmall.png');
+		game.load.image('bg', 'images/space_0.png');
 		
 		//Adding extra pointers for multi touch capability
 		game.input.addPointer();

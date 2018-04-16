@@ -2,6 +2,9 @@
 	
 	create: function (){
 		
+		//  The scrolling bg 
+		bg = game.add.tileSprite(0, 0, window.innerWidth * window.devicePixelRatio, window.innerHeight * window.devicePixelRatio, 'bg');
+		
 		//Variables set to...from main.js
 		planetLife = 3;
 		amountOfAsteroids = 0;
@@ -97,6 +100,10 @@
 	
 	
 	update: function (){
+		
+	//  Scroll the background
+    bg.tilePosition.y += bgY;
+	bg.tilePosition.x += bgX;
 		
 	//Pop things in the pendingDestroy array created in main
 	while(pendingDestroy.length > 0) {
