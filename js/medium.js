@@ -1,5 +1,6 @@
 ﻿var mediumState = {
-//
+	//Main Menu
+	
 	create : function (){
 
 	//Mulitple buttons
@@ -20,6 +21,13 @@
 			function(){
 				game.state.start('createOptions');
 	},this)
+
+	var animPlanet = game.add.sprite(game.width/2 , game.height/2, 'planetSpin');
+    var spin = animPlanet.animations.add('spin');
+    animPlanet.animations.play('spin', 30, true);
+	animPlanet.anchor.setTo(0.5,0.5);
+	game.world.sendToBack(animPlanet);
+	animPlanet.scale.setTo(1, 1);
 	
 
 	},
