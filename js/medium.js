@@ -8,6 +8,7 @@
 	playButton.events.onInputUp.add(
 			function(){
 				game.state.start('createSimple');
+				ga('myGame', 'startGame');
 	},this)
 	
 	var collectionButton = createButton(game.width/2, game.height/2 , 150, 50, "Collection");
@@ -23,11 +24,11 @@
 	},this)
 
 	var animPlanet = game.add.sprite(game.width/2 , game.height/2, 'planetSpin');
-    var spin = animPlanet.animations.add('spin');
+	var spin = animPlanet.animations.add('spin');
     animPlanet.animations.play('spin', 30, true);
 	animPlanet.anchor.setTo(0.5,0.5);
 	game.world.sendToBack(animPlanet);
-	animPlanet.scale.setTo(1, 1);
+	animPlanet.scale.setTo(2, 2);
 	
 
 	},

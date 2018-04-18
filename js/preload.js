@@ -4,7 +4,8 @@
 		game.load.image('asteroid', 'images/asteroidNew.png');
 		game.load.image('planet', 'images/planetSmall.png');
 		game.load.image('bg', 'images/space_0.png');
-		game.load.spritesheet('planetSpin', 'images/animPlanet.png', 640, 480, 58);
+		game.load.spritesheet('planetSpin', 'images/animPlanet.png', 320, 240, 31);
+		//58 on old png 31 on new
 		
 		//Adding extra pointers for multi touch capability
 		game.input.addPointer();

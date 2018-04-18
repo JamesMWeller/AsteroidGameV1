@@ -1,7 +1,6 @@
 ﻿var simpleState = {
 	
 	create: function (){
-		
 		//  The scrolling bg 
 		bg = game.add.tileSprite(0, 0, window.innerWidth * window.devicePixelRatio, window.innerHeight * window.devicePixelRatio, 'bg');
 		
@@ -27,16 +26,16 @@
 		for (var i = 0; i < 1; i++) {
 			//Creates object using the variable planet
 			planet = planets.create(game.width / 2, game.height / 2, 'planetSpin');
-			planet.scale.setTo(0.5, 0.5);
-			planet.body.setCircle(172);
+			//planet.scale.setTo(0.5, 0.5);
+			planet.body.setCircle(95,65,23);
+			
 			planet.body.collideWorldBounds = true;
 			planet.inputEnabled = true;
-			planet.anchor.setTo(0.7,0.5);
+			planet.anchor.setTo(0.5,0.5);
 			planet.input.enableDrag();
 			planet.input.useHandCursor = true;
 			var spin = planet.animations.add('spin');
 			planet.animations.play('spin', 30, true);
-			planet.anchor.setTo(0.8,0.8);
 		}
 		//Variable Created to randomise future attributes for asteroid distribution
 		var randElement = elementAttr[Math.floor(Math.random()*elementAttr.length)];
@@ -69,12 +68,17 @@
 			var alive = "true";
 			asteroid.anchor.setTo(0.5,0.5);
 			asteroid.body.setCircle(28);
+			asteroid.body.bounce.set(1);
 			asteroid.body.collideWorldBounds = true;
 			asteroid.inputEnabled = true;
 			asteroid.input.enableDrag();
 			asteroid.input.useHandCursor = true;
 			asteroid.events.onDragStart.add(this.onDragStart, asteroid);
 			asteroid.events.onDragStop.add(this.onDragStop, asteroid);
+			var randDirection = game.rnd.integerInRange(1, 360);
+
+			game.physics.arcade.velocityFromAngle(randDirection, 50, asteroid.body.velocity);
+			
 
 			//this adds 1 to the i variable
 			i++;
@@ -220,7 +224,7 @@
 	
 	render: function (){
 		//game.debug.physicsGroup(asteroids);
-		game.debug.physicsGroup(planets);
+		//game.debug.physicsGroup(planets);
 	},
 	
 	

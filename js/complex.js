@@ -10,6 +10,7 @@
 	    simpleButton.events.onInputUp.add(
 			function(){
 				game.state.start('createMedium');
+				ga('myGame', 'startGame');
 			},this
 		)
 	},
