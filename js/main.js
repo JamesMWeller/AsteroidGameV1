@@ -22,6 +22,14 @@ var pendingDestroy = [];
 var planetLife = 3;
 var amountOfAsteroids = 0;
 
+//Games won
+var gamesWon = 0;
+
+//Audio
+var spaceMusic;
+var musicOnOff = false;
+var musicIsPlaying = false;
+
 //Text
 var livesLeftText;
 var text2;

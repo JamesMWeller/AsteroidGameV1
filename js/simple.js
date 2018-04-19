@@ -8,6 +8,17 @@
 		planetLife = 3;
 		amountOfAsteroids = 0;
 		
+		music = game.add.audio('spaceMusic');
+			if (musicIsPlaying == false && musicOnOff == false){
+				
+				music.loop = true;
+				music.play();
+				musicIsPlaying = true;
+				music.volume = 0.02;
+			
+			} 
+		
+		
 		//ARCADE physics system implmented
 		game.physics.startSystem(Phaser.Physics.ARCADE);
 
@@ -28,7 +39,6 @@
 			planet = planets.create(game.width / 2, game.height / 2, 'planetSpin');
 			//planet.scale.setTo(0.5, 0.5);
 			planet.body.setCircle(95,65,23);
-			
 			planet.body.collideWorldBounds = true;
 			planet.inputEnabled = true;
 			planet.anchor.setTo(0.5,0.5);
@@ -42,7 +52,7 @@
 		
 		//While statement for creating the asteroids
 		var i = 0;
-		while (i < 12) {
+		while (i < 12 + gamesWon) {
 			//variables created for randon X and Y 
 			var dx = game.world.randomX;
 			var dy = game.world.randomY;
@@ -82,7 +92,6 @@
 
 			//this adds 1 to the i variable
 			i++;
-			
 			}
 			
 		}
@@ -111,6 +120,7 @@
 	//  Scroll the background
     bg.tilePosition.y += bgY;
 	bg.tilePosition.x += bgX;
+
 		
 	//Pop things in the pendingDestroy array created in main
 	while(pendingDestroy.length > 0) {
@@ -142,8 +152,13 @@
 		{
 			alert("Congratulations you've save the planet");
 			game.state.restart();
+			gamesWon++;
+			music.stop();
 		}else{
-			console.log("123");
+			alert("Congratulations you've save the planet");
+			game.state.restart();
+			gamesWon++;
+			music.stop();
 		}
 	} else {
 		//Still got asteroids
@@ -204,7 +219,9 @@
 		if (planetLife == 0) {
 			
 			alert("Game Over");
+			gamesWon--;
 			game.state.restart();
+			music.stop();
 			
 				if(typeof(Storage) !== "undefined")
 				{
@@ -225,6 +242,8 @@
 	render: function (){
 		//game.debug.physicsGroup(asteroids);
 		//game.debug.physicsGroup(planets);
+		game.debug.soundInfo(music, 20, 32);
+		
 	},
 	
 	

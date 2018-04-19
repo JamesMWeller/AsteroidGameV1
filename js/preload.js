@@ -7,6 +7,9 @@
 		game.load.spritesheet('planetSpin', 'images/animPlanet.png', 320, 240, 31);
 		//58 on old png 31 on new
 		
+		//Audio
+		game.load.audio('spaceMusic', ['assets/Music/spaceMusic.ogg', 'assets/Music/spaceMusic.mp3'])
+		
 		//Adding extra pointers for multi touch capability
 		game.input.addPointer();
 		game.input.addPointer();
