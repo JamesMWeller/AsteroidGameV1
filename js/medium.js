@@ -8,19 +8,21 @@
 	playButton.events.onInputUp.add(
 			function(){
 				game.state.start('createSimple');
-				ga('myGame', 'startGame');
+				ga('send', 'event', 'AsteroidGame', 'Game Start');
 	},this)
 	
 	var collectionButton = createButton(game.width/2, game.height/2 , 150, 50, "Collection");
 	    collectionButton.events.onInputUp.add(
 			function(){
 				game.state.start('createComplex');
+				ga('send', 'event', 'AsteroidGame', 'Collection Start');
 	},this)
 	
 	var optionsButton = createButton(game.width/2, game.height/2 + 60, 150, 50, "Options");
 	    optionsButton.events.onInputUp.add(
 			function(){
 				game.state.start('createOptions');
+				ga('send', 'event', 'AsteroidGame', 'Options Start');
 	},this)
 
 	var animPlanet = game.add.sprite(game.width/2 , game.height/2, 'planetSpin');

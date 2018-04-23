@@ -96,15 +96,6 @@
 			
 		}
 		
-		/* var graphics = game.add.graphics(0, 0);
-
-		graphics.lineStyle(2, 0xffd900, 1);
-
-		graphics.beginFill(0xFF0000, 1);
-		graphics.drawCircle(game.width/2, game.height/2, 172); */
-	
-
-		
 		//Creates button to move to different state
 		var simpleButton = createButton(100, game.height - 50, 150, 50, "Home");
 	    simpleButton.events.onInputUp.add(
@@ -153,6 +144,7 @@
 			alert("Congratulations you've save the planet");
 			game.state.restart();
 			gamesWon++;
+			ga('send', 'event' , 'gameState', 'Asteroids Destroyed');
 			music.stop();
 		}else{
 			alert("Congratulations you've save the planet");
@@ -221,6 +213,8 @@
 			alert("Game Over");
 			gamesWon--;
 			game.state.restart();
+			ga('send', 'event' , 'gameState', 'Game Over');
+			//ga('send', 'event', 'gameState' , 'Time')
 			music.stop();
 			
 				if(typeof(Storage) !== "undefined")
@@ -242,7 +236,7 @@
 	render: function (){
 		//game.debug.physicsGroup(asteroids);
 		//game.debug.physicsGroup(planets);
-		game.debug.soundInfo(music, 20, 32);
+		//game.debug.soundInfo(music, 20, 32);
 		
 	},
 	
